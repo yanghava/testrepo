@@ -1,8 +1,7 @@
 ﻿# first md file
 
 ## I got following recommendation after I created my first git repository
-[code]
-
+```powershell
 echo "# testrepo" >> README.md
 git init
 git add README.md
@@ -13,24 +12,25 @@ git push -u origin main
 
 ## branch
 the first and default branch is named master
- 
- PS D:\codes\ProgrammerLearning\testrepo> git branch
-* master
+
+```powershell 
+PS D:\codes\ProgrammerLearning\testrepo> git branch
+\* master
 
 ### change branch name
 
 using "git branch -M" to rename (move) the branch 
-
+```powershell
 PS D:\codes\ProgrammerLearning\testrepo> git branch -M main
 PS D:\codes\ProgrammerLearning\testrepo> git branch
-* main
+\* main
 
 ### creat a new branch
 git branch <branch-name>
-
+```powershell
 PS D:\codes\ProgrammerLearning\testrepo> git branch testbranch
 PS D:\codes\ProgrammerLearning\testrepo> git branch  
-* main  
+\* main  
   testbranch
 
 Now there're two branches - main and testbranch
@@ -38,19 +38,19 @@ Now there're two branches - main and testbranch
 ### switch branch
 
 use "git switch" to change between branches
-
+```powershll
 PS D:\codes\ProgrammerLearning\testrepo> git switch testbranch
 M       first.md  
 Switched to branch 'testbranch'  
 PS D:\codes\ProgrammerLearning\testrepo> git branch  
   main  
-* testbranch
+\* testbranch
 
 ### commit to branch
-
+```powershell
 PS D:\codes\ProgrammerLearning\testrepo> git branch  
   main  
-* testbranch
+\* testbranch
 PS D:\codes\ProgrammerLearning\testrepo> git add .
 PS D:\codes\ProgrammerLearning\testrepo> git status
 On branch testbranch
