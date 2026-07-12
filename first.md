@@ -43,13 +43,13 @@ PS D:\codes\ProgrammerLearning\testrepo> git switch testbranch
 M       first.md
 Switched to branch 'testbranch'
 PS D:\codes\ProgrammerLearning\testrepo> git branch
-  main
+  main  
 * testbranch
 
 ### commit to branch
 
 PS D:\codes\ProgrammerLearning\testrepo> git branch
-  main
+  main  
 * testbranch
 PS D:\codes\ProgrammerLearning\testrepo> git add .
 PS D:\codes\ProgrammerLearning\testrepo> git status
