@@ -29,7 +29,7 @@ PS D:\codes\ProgrammerLearning\testrepo> git branch
 git branch <branch-name>
 
 PS D:\codes\ProgrammerLearning\testrepo> git branch testbranch
-PS D:\codes\ProgrammerLearning\testrepo> git branch
+PS D:\codes\ProgrammerLearning\testrepo> git branch  
 * main  
   testbranch
 
@@ -40,15 +40,15 @@ Now there're two branches - main and testbranch
 use "git switch" to change between branches
 
 PS D:\codes\ProgrammerLearning\testrepo> git switch testbranch
-M       first.md
-Switched to branch 'testbranch'
-PS D:\codes\ProgrammerLearning\testrepo> git branch
+M       first.md  
+Switched to branch 'testbranch'  
+PS D:\codes\ProgrammerLearning\testrepo> git branch  
   main  
 * testbranch
 
 ### commit to branch
 
-PS D:\codes\ProgrammerLearning\testrepo> git branch
+PS D:\codes\ProgrammerLearning\testrepo> git branch  
   main  
 * testbranch
 PS D:\codes\ProgrammerLearning\testrepo> git add .
