@@ -32,7 +32,7 @@ testProgram.c:7:9: note: include ‘<stdio.h>’ or provide a declaration of ‘
 ```
 what a mess!
 
-#update the file to include the stdio.h
+# update the file to include the stdio.h
 ```C
 #include <stdio.h>
 
@@ -48,7 +48,7 @@ int main() {
 }
 ```
 
-THen proceed with GCC and it succeeded
+Then proceed with GCC and it succeeded
 
 ```bash
 [root@DA22053700:Project1-GCC]# vi testProgram.c
@@ -59,15 +59,15 @@ total 20
 -rwxrwxrwx 1 root root  1250 Jul 22 08:14 learn.md
 -rwxrwxrwx 1 root root   219 Jul 22 08:16 testProgram.c
 ```
-##Note
+## Note
 The a.out was also generated even when the warning message was printed. 
 
 
 # observe results of different compile phases
-gcc -E loop.c -o loop.i (Preprocess: creates a huge text file).
-gcc -S loop.i -o loop.s (Compile: creates Assembly code).
-gcc -c loop.s -o loop.o (Assemble: creates the binary Object file).
-gcc loop.o -o loop(Link: creates the final ELF executable).
+- gcc -E loop.c -o loop.i (Preprocess: creates a huge text file).
+- gcc -S loop.i -o loop.s (Compile: creates Assembly code).
+- gcc -c loop.s -o loop.o (Assemble: creates the binary Object file).
+- gcc loop.o -o loop(Link: creates the final ELF executable).
 
 ```bash
 [root@DA22053700:Project1-GCC]# rm a.out
