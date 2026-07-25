@@ -493,3 +493,264 @@ Hello, World!
 | **Link** | `main.o` | `main` (resolved) | Replace all `00 00 00 00` placeholders with real addresses ✅ |
 
 You're now understanding what happens **inside the compilation pipeline** that 99% of developers never see! 🎓
+
+## Why was printf changed to puts
+Look at your original C code:
+
+```c
+printf("Hello, World!\n");
+```
+
+But the compiler optimized it! 🎯
+
+Since your string ends with \n and contains no format specifiers, the compiler replaced:
+
+```c
+printf("Hello, World!\n");   // Complex: parses format string
+```
+with:
+```c
+puts("Hello, World!");        // Simple: just prints string + newline
+```
+This is a compiler optimization! Check with -fno-builtin:
+
+```bash
+gcc testProgram.c -fno-builtin -o testProgram_noopt
+objdump -d testProgram_noopt | grep -A2 "call.*printf"
+```
+
+
+###🔍 Visual Summary: What's Where
+```bash
+
+TEXT SEGMENT (.text):
+├─ _start (0x1060)
+├─ main (0x1149)
+│  └─ call 1050 <puts@plt>  ← Your code
+└─ ...
+
+PLT SEGMENT (.plt.sec):
+├─ puts@plt (0x1050)
+│  └─ bnd jmp *0x3fd0  ← Points to GOT
+
+GOT SEGMENT (.got.plt):
+├─ 0x3fd0 → 0x7ffff7e5c9e0 (puts in libc)
+
+LIBC (Dynamically Loaded):
+├─ 0x7ffff7e5c9e0: puts() function ← EXECUTES HERE!
+
+### Summary
+Question	Answer
+Where does call 1050 go?	To PLT entry puts@plt at 0x1050
+What does PLT do?	Jumps to address stored in GOT at 0x3fd0
+What's in GOT 0x3fd0?	Address of puts() in libc (0x7fff...)
+Where is printf?	Optimized away! Compiler used puts() instead
+Why can't we see puts() code?	It's in libc (loaded at runtime), not in your binary
+
+
+# GDB
+
+While debugging the program, we can also review similiar information. However, the actual address changes while the program is loaded 
+
+
+## 🎯 Aha! Important Lesson: ASLR (Address Space Layout Randomization)!
+
+You've hit a **critical real-world security feature**! Let me explain:
+
+---
+
+## The Problem: ASLR 🔐
+
+Notice your breakpoint address:
+```
+Breakpoint 1 at 0x1149    ← In objdump
+Breakpoint 1, 0x0000555555555149 in main ()    ← In gdb
+```
+
+**The base address changed from `0x0000000000001149` to `0x0000555555555149`!**
+
+This is **ASLR** — the OS randomizes where the executable loads in memory for security.
+
+### The GOT Address Also Shifted!
+
+In objdump, we calculated GOT at `0x3fd0`, but **that's a relative offset**!
+
+With ASLR:
+```
+Base address: 0x555555554000 (randomized each run)
+GOT address: 0x555555554000 + 0x3fd0 = 0x555555557fd0 (not 0x3fd0!)
+```
+
+---
+
+## ✅ Solution: Read GOT from the Binary Itself
+
+Instead of hardcoding `0x3fd0`, let's find the actual GOT address:
+
+```bash
+gdb ./testProgram
+(gdb) break main
+(gdb) run
+(gdb) info proc mappings
+```
+
+Output will show:
+```
+Start Addr           End Addr       Size     Offset objfile
+0x555555554000   0x555555555000   0x1000   0x0    /path/to/testProgram
+0x555555755000   0x555555757000   0x2000   0x2000 /path/to/testProgram
+```
+
+The first entry is where your executable is loaded. Everything is offset from there.
+
+---
+
+## Better Approach: Let gdb Calculate It
+
+```bash
+(gdb) break main
+(gdb) run
+(gdb) info symbol 0x555555557fd0
+# Or: x/gx &main
+(gdb) print/x $rip
+$1 = 0x555555555149          ← Current main address
+```
+
+Now calculate the GOT address from the binary offset:
+
+```bash
+(gdb) info files
+# Shows: Symbols from "/path/to/testProgram"
+# Entry point: 0x1060
+```
+
+---
+
+## 🔥 The Direct Way: Use Symbol Names!
+
+Instead of guessing addresses, use **symbol references**:
+
+```bash
+(gdb) break main
+(gdb) run
+(gdb) info variables puts     # Find puts symbol
+(gdb) x/gx 0x555555557fd0    # Try the calculated address
+```
+
+Or even better — **examine the GOT directly**:
+
+```bash
+(gdb) x/a $rip - 0x9        # Look back at recent instructions
+(gdb) disassemble main       # See actual addresses in current context
+```
+
+---
+
+## 🎯 Let's Do This Properly
+
+Run these commands in gdb:
+
+```bash
+gdb ./testProgram
+(gdb) break main
+(gdb) run
+
+# Now print what we need:
+(gdb) disassemble main
+```
+
+You'll see:
+```asm
+0x0000555555555149 <+0>:    endbr64
+0x000055555555514d <+4>:    sub    $0x8,%rsp
+0x0000555555555151 <+11>:   lea    0xeac(%rip),%rdi
+0x0000555555555158 <+18>:   call   0x555555555050 <puts@plt>
+```
+
+Now let's trace to the PLT:
+
+```bash
+(gdb) x/i 0x555555555050     # Disassemble puts@plt
+(gdb) x/gx 0x555555557fd0    # Read GOT entry (adjust address!)
+```
+
+To find the correct GOT address:
+
+```bash
+(gdb) info symbol 0x555555557fd0
+(gdb) x/gx 0x555555555050 + 4  # Look near the PLT entry
+```
+
+---
+
+## 📊 Better Way: Use objdump + gdb Together
+
+First, find the offset in your binary:
+
+```bash
+objdump -R testProgram | grep puts
+# Output: 00000000000020d0 JUMP_SLOT  puts@GLIBC_2.2.5  0000000000000000
+```
+
+This says GOT entry for `puts` is at offset **0x20d0** in the binary.
+
+Then in gdb, with ASLR offset `0x555555554000`:
+
+```bash
+(gdb) x/gx 0x555555554000 + 0x20d0
+```
+
+Or let gdb do it:
+
+```bash
+(gdb) x/gx puts@got.plt    # gdb syntax!
+0x555555757fd0:  0x00007ffff7e5c9e0
+```
+
+🎯 **There it is!** `0x00007ffff7e5c9e0` is the address of `puts()` in libc!
+
+---
+
+## 🚀 Final Verification
+
+```bash
+(gdb) x/i 0x00007ffff7e5c9e0
+0x7ffff7e5c9e0 <puts>:    push   %rbp
+```
+
+**Perfect!** You're looking at the actual `puts()` function in libc! ✅
+
+---
+
+## Summary: The Complete Chain (With ASLR)
+
+```
+Your code:
+  0x555555555158:  call   0x555555555050 <puts@plt>
+                        ↓
+PLT entry:
+  0x555555555050:  bnd jmp *0x2f75(%rip)
+                        ↓ (computes to 0x555555557fd0)
+GOT entry:
+  0x555555557fd0:  0x00007ffff7e5c9e0
+                        ↓
+libc:
+  0x7ffff7e5c9e0:  <puts> executes!
+```
+
+---
+
+## Try This Now
+
+Run in gdb:
+
+```bash
+(gdb) break main
+(gdb) run
+(gdb) disassemble main
+(gdb) x/gx puts@got.plt
+(gdb) x/i 0x[address_from_above]
+(gdb) continue
+```
+
+
