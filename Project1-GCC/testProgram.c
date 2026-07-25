@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #define LOOP 1
 
 int main() {

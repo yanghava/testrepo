@@ -69,6 +69,7 @@ The a.out was also generated even when the warning message was printed.
 - gcc -c loop.s -o loop.o (Assemble: creates the binary Object file).
 - gcc loop.o -o loop(Link: creates the final ELF executable).
 
+## gcc -E
 ```bash
 [root@DA22053700:Project1-GCC]# rm a.out
 [root@DA22053700:Project1-GCC]# gcc -E testProgram.c -o testProgram.i
@@ -116,13 +117,13 @@ int main() {
 
 so, what's in the .i file? Here's the explaination from WebAI
 
-# 📋 Preprocessed C File Analysis
+### 📋 Preprocessed C File Analysis
 
-## Summary
+#### Summary
 
 This `.i` file is the **preprocessed output** of your simple C program. Here's what happened:
 
-### 🔄 Generation Process
+##### 🔄 Generation Process
 ```bash
 gcc -E testProgram.c -o testProgram.i
 ```
@@ -130,9 +131,9 @@ The `-E` flag tells GCC to **stop after preprocessing** — it expands all heade
 
 ---
 
-## 📊 What's in the File
+#### 📊 What's in the File
 
-### 1️⃣ **Massive Header Expansion** (~900+ lines)
+##### 1️⃣ **Massive Header Expansion** (~900+ lines)
 Your simple `#include <stdio.h>` expanded into:
 - ✅ **stdio.h** and all its dependencies (features.h, types.h, etc.)
 - ✅ **System types** (size_t, off_t, FILE struct, etc.)
@@ -141,7 +142,7 @@ Your simple `#include <stdio.h>` expanded into:
 
 **Why so large?** The `<stdio.h>` header itself includes many other headers to define the FILE structure and all I/O functions.
 
-### 2️⃣ **Macro Expansion**
+##### 2️⃣ **Macro Expansion**
 ```c
 #define LOOP 1
 ```
@@ -150,7 +151,7 @@ Your simple `#include <stdio.h>` expanded into:
 for (i = 0; i < 1; i++) {  // LOOP replaced with 1
 ```
 
-### 3️⃣ **Your Actual Code** (last ~10 lines)
+##### 3️⃣ **Your Actual Code** (last ~10 lines)
 ```c
 int main() {
     int i;
@@ -163,7 +164,7 @@ int main() {
 
 ---
 
-## 🏃 Runtime Usage
+#### 🏃 Runtime Usage
 
 | Stage | File | Purpose |
 |-------|------|---------|
@@ -176,7 +177,7 @@ int main() {
 
 ---
 
-## 💡 Key Observations
+#### 💡 Key Observations
 
 | Aspect | Details |
 |--------|---------|
@@ -186,5 +187,92 @@ int main() {
 | **Dependencies** | printf (from stdio.h) |
 
 
+## gcc -S 
+```bash
+[root@DA22053700:Project1-GCC]# ls -l
+total 28
+-rwxrwxrwx 1 root root  5505 Jul 24 12:42 learn.md
+-rwxrwxrwx 1 root root   219 Jul 22 08:16 testProgram.c
+-rwxrwxrwx 1 root root 18043 Jul 22 08:28 testProgram.i
+[root@DA22053700:Project1-GCC]# gcc -S testProgram.i -O testProgram.s
+[root@DA22053700:Project1-GCC]# ls -l
+total 28
+-rwxrwxrwx 1 root root  5505 Jul 24 12:42 learn.md
+-rwxrwxrwx 1 root root   219 Jul 22 08:16 testProgram.c
+-rwxrwxrwx 1 root root 18043 Jul 22 08:28 testProgram.i
+-rwxrwxrwx 1 root root   631 Jul 24 12:44 testProgram.s
+[root@DA22053700:Project1-GCC]# file testProgram.s
+testProgram.s: assembler source, ASCII text
+[root@DA22053700:Project1-GCC]# cat testProgram.s
+        .file   "testProgram.c"
+        .text
+        .section        .rodata.str1.1,"aMS",@progbits,1
+.LC0:
+        .string "Hello, World!"
+        .text
+        .globl  main
+        .type   main, @function
+main:
+.LFB0:
+        .cfi_startproc
+        endbr64
+        subq    $8, %rsp
+        .cfi_def_cfa_offset 16
+        leaq    .LC0(%rip), %rdi
+        call    puts@PLT
+        movl    $0, %eax
+        addq    $8, %rsp
+        .cfi_def_cfa_offset 8
+        ret
+        .cfi_endproc
+.LFE0:
+        .size   main, .-main
+        .ident  "GCC: (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0"
+        .section        .note.GNU-stack,"",@progbits
+        .section        .note.gnu.property,"a"
+        .align 8
+        .long   1f - 0f
+        .long   4f - 1f
+        .long   5
+0:
+        .string "GNU"
+1:
+        .align 8
+        .long   0xc0000002
+        .long   3f - 2f
+2:
+        .long   0x3
+3:
+        .align 8
+4:
+```
+### [explaination to the gcc -S](gcc-S-explained.md)
 
+## gcc -c
+```bash
+[root@DA22053700:Project1-GCC]# gcc -c testProgram.s -o testProgram.o
+[root@DA22053700:Project1-GCC]# file testProgram.o
+testProgram.o: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped
+```
 
+### [explaination to the gcc -c](gcc-C-explained.md)
+
+## gcc link
+```bash
+[root@DA22053700:Project1-GCC]# gcc testProgram.o -o testProgram
+
+[root@DA22053700:Project1-GCC]# ls -l testProgram*
+-rwxrwxrwx 1 root root 15968 Jul 24 16:22 testProgram
+-rwxrwxrwx 1 root root   219 Jul 22 08:16 testProgram.c
+-rwxrwxrwx 1 root root 18043 Jul 22 08:28 testProgram.i
+-rwxrwxrwx 1 root root  1512 Jul 24 15:39 testProgram.o
+-rwxrwxrwx 1 root root   631 Jul 24 12:44 testProgram.s
+
+```
+
+### [explaination to gcc link](gcc-link-explained.md)
+
+```bash
+[root@DA22053700:Project1-GCC]# ./testProgram
+Hello, World!
+```
