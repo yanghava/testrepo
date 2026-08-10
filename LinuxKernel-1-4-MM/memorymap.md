@@ -392,6 +392,11 @@ Here's the breakdown of the memory mapping
 ```
 00400000-00488000 r-xp  → .text  (executable code, ~544 KB)
 00687000-0069b000 r--p  → .rodata (read-only data, constants)
-0069b000-006a1000 rw-p  → .data/.bss (global variables)
-006a1000-006af000 rw-p  → anonymous (BSS overflow / extra writable data)
+0069b000-006a1000 rw-p  → .data (global variables with initialized values)
+006a1000-006af000 rw-p  → .bss (BSS overflow / extra writable data, global variables without initialized values)
 ```
+> what's the difference between variables stored in .data and .bss
+> - .data: initialized global/static variables.
+> - .bss: uninitialized or zero-initialized global/static variables. 
+> - Refer to [dataSegmentDeepDive](dataSegmentDeepDive.md) for more investigation
+
