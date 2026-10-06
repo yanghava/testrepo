@@ -1,0 +1,53 @@
+Process ID: 199084
+
+Press Enter to start the test...
+Process ID: 199084
+Page size: 4096 bytes
+Small allocation: 65536 bytes
+Large allocation: 262144 bytes
+
+Initial program break: 0x5b7819f35000
+Allocated 1 x 65536 bytes
+Program break: 0x5b7819f35000
+Allocated 2 x 65536 bytes
+Program break: 0x5b7819f57000
+Allocated 3 x 65536 bytes
+Program break: 0x5b7819f57000
+Allocated 4 x 65536 bytes
+Program break: 0x5b7819f57000
+Allocated 5 x 65536 bytes
+Program break: 0x5b7819f87000
+Allocated 6 x 65536 bytes
+Program break: 0x5b7819f87000
+Allocated 7 x 65536 bytes
+Program break: 0x5b7819f87000
+Allocated 8 x 65536 bytes
+Program break: 0x5b7819fb7000
+Allocated 9 x 65536 bytes
+Program break: 0x5b7819fb7000
+Allocated 10 x 65536 bytes
+Program break: 0x5b7819fb7000
+Allocated 11 x 65536 bytes
+Program break: 0x5b7819fe7000
+Allocated 12 x 65536 bytes
+Program break: 0x5b7819fe7000
+Allocated 13 x 65536 bytes
+Program break: 0x5b7819fe7000
+Allocated 14 x 65536 bytes
+Program break: 0x5b781a017000
+Allocated 15 x 65536 bytes
+Program break: 0x5b781a017000
+Allocated 16 x 65536 bytes
+Program break: 0x5b781a017000
+
+After small allocations:
+Program break: 0x5b781a017000
+small_blocks[0] 0x5b7819f162c0 -> 5b7819f14000-5b781a017000 rw-p 00000000 00:00 0                          [heap]
+Small allocation completed, press Enter Key to continue
+
+After large allocation:
+Program break: 0x5b781a017000
+large_block     0x7566dd46d010 -> 7566dd46d000-7566dd4b1000 rw-p 00000000 00:00 0 
+
+Press Enter to free the memory and exit...
+Memory freed.

@@ -1,0 +1,22 @@
+============================================================
+[PARENT 19485] Starting process.
+============================================================
+[CHILD  19486] Initialized. PPID is 19485.
+
+>>> [CHILD  19486] Enter 'c' to continue task, 'q' to terminate child: 
+[CHILD  19486] EOF detected. Exiting.
+[CHILD  19486] Process exiting with status 0.
+============================================================
+[PARENT 19485] Starting process.
+============================================================
+[PARENT 19485] Created child PID 19486.
+[PARENT 19485] Parent will continue working autonomously.
+
+[PARENT 19485] Working... cycle #1
+
+============================================================
+[PARENT 19485] Detected child 19486 has terminated!
+[PARENT 19485] Child exited normally with status: 0
+[PARENT 19485] Parent completed a total of 1 progress cycles.
+[PARENT 19485] All done. Parent exiting.
+============================================================
