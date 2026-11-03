@@ -1,0 +1,262 @@
+== Info:   Trying 4.157.210.249:443...
+== Info: Connected to sre-dashboard.niceglacier-4979f100.eastus.azurecontainerapps.io (4.157.210.249) port 443 (#0)
+== Info: ALPN, offering h2
+== Info: ALPN, offering http/1.1
+== Info:  CAfile: /etc/ssl/certs/ca-certificates.crt
+== Info:  CApath: /etc/ssl/certs
+== Info: TLSv1.0 (OUT), TLS header, Certificate Status (22):
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.3 (OUT), TLS handshake, Client hello (1):
+=> Send SSL data, 512 bytes (0x200)
+0000: ........eI......>.....e`Ms../..A.Wp.{. ...*..k....[..4.^..J99..%
+0040: ......J.>.......,.0.........+./...$.(.k.#.'.g.....9.....3.....=.
+0080: <.5./.....u...D.B..?sre-dashboard.niceglacier-4979f100.eastus.az
+00c0: urecontainerapps.io..................................3t.........
+0100: h2.http/1.1.........1.....*.(...................................
+0140: ......+........-.....3.&.$... ..f........h...E.....^.~r>...-`..
+0180: .~..............................................................
+01c0: ................................................................
+== Info: TLSv1.2 (IN), TLS header, Certificate Status (22):
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....z
+== Info: TLSv1.3 (IN), TLS handshake, Server hello (2):
+<= Recv SSL data, 122 bytes (0x7a)
+0000: ...v......Ly.EU?.H...5....9]..Y...'^.V ...*..k....[..4.^..J99..%
+0040: ......J......3.$... .3...)....F}..........:... .*..l.+....
+== Info: TLSv1.2 (IN), TLS header, Finished (20):
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (IN), TLS header, Supplemental data (23):
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....5
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+<= Recv SSL data, 15 bytes (0xf)
+0000: .............h2
+== Info: TLSv1.3 (IN), TLS handshake, Certificate (11):
+<= Recv SSL data, 6873 bytes (0x1ad9)
+0000: ...........0...0..........A...AGp...qW......A0...*.H........0W1.
+0040: 0...U....US1.0...U....Microsoft Corporation1(0&..U....Microsoft 
+0080: TLS G2 RSA CA OCSP 020...260930024455Z..270108014455Z0..1.0...U.
+00c0: ...US1.0...U....WA1.0...U....Redmond1.0...U....Microsoft Corpora
+0100: tion1:08..U...1niceglacier-4979f100.eastus.azurecontainerapps.io
+0140: 0.."0...*.H.............0............=...ll......_.u.......{.9o.
+0180: ....dK:.a.......z.-...........g.R..I..-=Puh.../1..C.....`...Y"..
+01c0: ........1...[.X..Q....!+(.z.GDR.....<.B.x...Py..:....6r._0A...8
+0200: 3?fi.k...u6..E..=...,....si..E..R.<M*.]..W^....K.U..x.u..+~t.@..
+0240: b...m'..~..@...5...[..0s..;.h..R.........o0..k0.....+.....y.....
+0280: .......w.......S.jJ..WI.....,....d............<.......H0F.!..\..
+02c0: ...n*...p....%.L2..4.....Vm~.!...9....d.....`9..e..O.}.i.4sZ...
+0300: v...]..-.u.HUx./q..n.9})|...{..........<.......G0E.!.......+._K.
+0340: ..j..;.n..Z3.bk2.?.c. G.........E>.........=]0q.E....X0...+....
+0380: .7....0.0...+.......0<..+.....7.../0-.%+.....7.........F........
+03c0: ...]...*...5..d..'0.....+..........0..0a..+.....0..Uhttp://www.m
+0400: icrosoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP
+0440: %2002.crt0g..+.....0..[http://caissuers.microsoft.com/pkiops/cer
+0480: ts/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002.crt0-..+.....0..!
+04c0: http://oneocsp.microsoft.com/ocsp0...U......X..9.k3.CjMS...W{...
+0500: 0...U...........0..%..U......0....3*.niceglacier-4979f100.eastus
+0540: .azurecontainerapps.io.7*.scm.niceglacier-4979f100.eastus.azurec
+0580: ontainerapps.io.<*.internal.niceglacier-4979f100.eastus.azurecon
+05c0: tainerapps.io.7*.ext.niceglacier-4979f100.eastus.azurecontainera
+0600: pps.io.1niceglacier-4979f100.eastus.azurecontainerapps.io0...U..
+0640: .....0.0....U.....0..0.........lhttp://www.microsoft.com/pkiops/
+0680: crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002_Partit
+06c0: ion00047.crl.mhttp://crl2.microsoft.com/pkiops/crl/partition/Mic
+0700: rosoft%20TLS%20G2%20RSA%20CA%20OCSP%2002_Partition00047.crl0f..U
+0740: . ._0]0...g.....0Q..+.....7L.}..0A0?..+........3http://www.micro
+0780: soft.com/pkiops/Docs/Repository.htm0...U.#..0..../3.|QO.-...B8.
+07c0: .../0...U.%..0...+.......0...*.H.............ah;U..a...%2...<Eh.
+0800: m...E.....F..hB..4.^p..6......H,.$t....\.Qqh.)b0.o.#.....%<Ro..i
+0840: .D.b^.D?..e......X(..!.>n.t....fQ9.P..Y.k..,=r)K..E._l.D.@5..<;H
+0880: ..y.".. .....6U3.%I*..$DTQ...........1....z.j.:..r..,S.]r9..?.:.
+08c0: .n._6..Pe.n....(.C..(.(...Aqy..H...f.._:i.........OhS.I.9..P..(
+0900: P.....4...OD.t......j[....le.V....].O.)b...h..+.B^..fx..r^7....
+0940: ..b....e..#.AxF.HPO...1.B.3........3.....[..f.@|p`...+..C.Ic!..Z
+0980: .Ii. .%....(.]@4....W..K.TJ......,.5`~r.....{.....xL.4ob..;h..cX
+09c0: CF............IK..w......VE{.F.0$.g62..A....A.....0...0.........
+0a00: .3....Id.oD ;"......0...*.H........0Q1.0...U....US1.0...U....Mic
+0a40: rosoft Corporation1"0 ..U....Microsoft TLS RSA Root G20...250801
+0a80: 200300Z..290603200300Z0W1.0...U....US1.0...U....Microsoft Corpor
+0ac0: ation1(0&..U....Microsoft TLS G2 RSA CA OCSP 020.."0...*.H......
+0b00: .......0........._..l...-F...-G?s..;.6.h E@^paJ.I......-w.m<v. .
+0b40: ./.c...k.............t...85. ..Zf... 4.C.E...p......D..hGU..]...
+0b80: .R...b@e...^:..^.Z...N.b.......'.K.2..h....}7k....y".c..~.....qm
+0bc0: }.v.=...#`....v...v..........WB.......y..3.N.lD.)...Q~..b......@
+0c00: .X.xn.:.@.P.....B>g.w.......<..<....I..Ee1....!.........8yj.....
+0c40: ._.w....Q..!$...|9{D.b......"......UN>.z......^#.-[..U.A.6.0....
+0c80: n.4E.3..s.)...W.....t...b>w..m..i.~.Q..J.A..O.j.X%..Y<..u..?U..v
+0cc0: ....1%.{QLY+7..$TB..'_;../v....v......J@....=..D.i..#._...eW.M.|
+0d00: .c*dCTG./..../J?.........0..}0...U...........0...+.....7.......0
+0d40: ...U......./3.|QO.-...B8..../0...U. ..0.0...g.....0...U.%..0...
+0d80: +.......0...+.....7.......S.u.b.C.A0...U.......0.......0...U.#..
+0dc0: 0......H..1Y1.K_....y..v0....U.....0..0.........Ihttp://www.micr
+0e00: osoft.com/pkiops/crl/Microsoft%20TLS%20RSA%20Root%20G2.crl.Jhttp
+0e40: ://crl2.microsoft.com/pkiops/crl/Microsoft%20TLS%20RSA%20Root%20
+0e80: G2.crl0.....+...........0..0c..+.....0..Whttp://www.microsoft.co
+0ec0: m/pkiops/certs/Microsoft%20TLS%20RSA%20Root%20G2%20-%20xsign.crt
+0f00: 0i..+.....0..]http://caissuers.microsoft.com/pkiops/certs/Micros
+0f40: oft%20TLS%20RSA%20Root%20G2%20-%20xsign.crt0-..+.....0..!http://
+0f80: oneocsp.microsoft.com/ocsp0...*.H.............!.....5.N!.6..^...
+0fc0: .`.]]6..",.4.<......n..n.1d}....6.F#...5.u.wiI.......W.I;......z
+1000: ..+......g.b..a.....m.....SLQ.g.`.I.u..V.<y98&Z....P..S..H.J.P.
+1040: ..Bc>"b]........Q6.......#..f%Ab....Vp.....H..m...G...}G.....Kf.
+1080: .{.m..5x... L..ux..s..G..z*.......56}.D.s.~. ..........;.vu.....
+10c0: .`...U0...._...-................z..v....#yQsC(...O..d-.........
+1100: .q.3O.;...sSI..f. ..".H9.B..v.O...u.Z.r3...m.....Wu.>^..{..E.h.[
+1140: @...1.6...7.!..c.X..7.1.&[.v..0.......C.....B...'......R..f...|y
+1180: 0...m...-......!......G.`.E=...M.F..f...T..V.......0...0..q.....
+11c0: ....k,Fi..Gs.G....0...*.H........0a1.0...U....US1.0...U....DigiC
+1200: ert Inc1.0...U....www.digicert.com1 0...U....DigiCert Global Roo
+1240: t G20...250521000000Z..290619235959Z0Q1.0...U....US1.0...U....Mi
+1280: crosoft Corporation1"0 ..U....Microsoft TLS RSA Root G20.."0...*
+12c0: .H.............0............G.(.q.A....W.k.....:`.....[.2.{..r'k
+1300: ]@...........t./.....3.W.. |!.....Nd.Z.Ku...dM.R.........?..NE9
+1340: ^.)...g........J..9....3A.....u.S.!.\DL.`W.........2J..Q.....?6.
+1380: /oL9..i".;u...>....A8.~FH....p.....r.~}.lN.p......b..k..........
+13c0: 1K..k3........J._.1v8?.Gl........_.l.....*.{..(.1..SLuf.}...`.e
+1400: .1.r...-.D..W.n....e.r-....~I.Yg.....m..Ex..`j....$;sJZ..>.a.x..
+1440: ..0.J8-.X.. .6*..2..8.....E.|...b...q.............8B4.i....s..C.
+1480: C.X.O....=.:@8.....d..c...U.Z....>...d......M.E..e.%.......[.P..
+14c0: ..] .g.y.....o. r0...u'5........K0..G0...U.......0....0...U.....
+1500: ....H..1Y1.K_....y..v0...U.#..0...N"T ....n..........90...U.....
+1540: ......0...U.%..0...+.......0v..+........j0h0$..+.....0...http://
+1580: ocsp.digicert.com0@..+.....0..4http://cacerts.digicert.com/DigiC
+15c0: ertGlobalRootG2.crt0B..U...;0907.5.3.1http://crl3.digicert.com/D
+1600: igiCertGlobalRootG2.crl0...U. ..0.0...g.....0...*.H.............
+1640: ...+7t.K.6.6...........D..T...A.F..v4..Ub5.....Zb.C...J..k....%f
+1680: ..yn[%.$...y-5_B.x...e.. P...j:...H.........u.'%Z..:pl.G.c.S...5
+16c0:  ..=.....$.EVw.g.1B.W..&..C.W.c...:..{K.....f.gg...L...+."=}....
+1700: c8,.V...R....o.mk..A/.>.1..|J..a.FF(.W..o...w%.{.).;ry....Tm5+.z
+1740: .....0...0..v........:.......(d.....0...*.H........0a1.0...U....
+1780: US1.0...U....DigiCert Inc1.0...U....www.digicert.com1 0...U....D
+17c0: igiCert Global Root G20...130801120000Z..380115120000Z0a1.0...U.
+1800: ...US1.0...U....DigiCert Inc1.0...U....www.digicert.com1 0...U..
+1840: ..DigiCert Global Root G20.."0...*.H.............0.........7.4.{
+1880: k..h..Ju.F.!.....T.......:..<z....k..-.^.$D.b.~...~.Tu ..P..c.l0
+18c0: ..............7...CN.{,..../....:....%..k.`.`.O!I..g..a.........
+1900: 2k..W.]........I.5-..Im.w..IK..U......#.LmE.....0..LU.'JW.|...s.
+1940: ..J...P........!..........g(.s..=Fv....!4M..E..I......3.).......
+1980: B0@0...U.......0....0...U...........0...U......N"T ....n........
+19c0: ..90...*.H.............`g(.o.Hc.1..g...}<..J...+..._sw*2.9.gB.#
+1a00: .Eg5......a.4.. L....5.v...B..D..6t$Z.l..Y5..I......G*=./.\... 
+1a40: .._SF..h...0.>1.........>5.._..pPpGA.W.N......../.%.u.....o..Aq.
+1a80: .*.O. U...E..D....2...SF.,...".K..E.....X..}R..YC....&.o....7}..
+1ac0: ...w_v.<..]V[..fn.57.2...
+== Info: TLSv1.3 (IN), TLS handshake, CERT verify (15):
+<= Recv SSL data, 264 bytes (0x108)
+0000: ........Q..q'/.xb.x.NK.d..B..%......=......D...;.t4..c9..%...Nb<
+0040: .T../.|..:..vjo..w.Y...b..).v.-.5.M.....yF_`..U....92Vs...f....Q
+0080: U._.xa...)C...aoHL..=.P=."'..._[.Q>...4.....g...N.......[7....0t
+00c0: .h..?.h..S...B....;.........3..uZ..Yy......6.).........~.<...$.W
+0100: ...c....
+== Info: TLSv1.3 (IN), TLS handshake, Finished (20):
+<= Recv SSL data, 52 bytes (0x34)
+0000: ...0..C..bS.....WH....5Z;.d]...c.>....*VC(.........a
+== Info: TLSv1.2 (OUT), TLS header, Finished (20):
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.2 (OUT), TLS header, Supplemental data (23):
+=> Send SSL data, 5 bytes (0x5)
+0000: ....E
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.3 (OUT), TLS handshake, Finished (20):
+=> Send SSL data, 52 bytes (0x34)
+0000: ...0.x....ML......q./.$:.[....-/..u.8.:p.].!b.0.V.da
+== Info: SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384
+== Info: ALPN, server accepted to use h2
+== Info: Server certificate:
+== Info:  subject: C=US; ST=WA; L=Redmond; O=Microsoft Corporation; CN=niceglacier-4979f100.eastus.azurecontainerapps.io
+== Info:  start date: Sep 30 02:44:55 2026 GMT
+== Info:  expire date: Jan  8 01:44:55 2027 GMT
+== Info:  subjectAltName: host "sre-dashboard.niceglacier-4979f100.eastus.azurecontainerapps.io" matched cert's "*.niceglacier-4979f100.eastus.azurecontainerapps.io"
+== Info:  issuer: C=US; O=Microsoft Corporation; CN=Microsoft TLS G2 RSA CA OCSP 02
+== Info:  SSL certificate verify ok.
+== Info: Using HTTP2, server supports multiplexing
+== Info: Connection state changed (HTTP/2 confirmed)
+== Info: Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+== Info: TLSv1.2 (OUT), TLS header, Supplemental data (23):
+=> Send SSL data, 5 bytes (0x5)
+0000: ....)
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.2 (OUT), TLS header, Supplemental data (23):
+=> Send SSL data, 5 bytes (0x5)
+0000: ....,
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.2 (OUT), TLS header, Supplemental data (23):
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+== Info: Using Stream ID: 1 (easy handle 0x616907535a90)
+== Info: TLSv1.2 (OUT), TLS header, Supplemental data (23):
+=> Send SSL data, 5 bytes (0x5)
+0000: ....Z
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send header, 125 bytes (0x7d)
+0000: GET / HTTP/2
+000e: Host: sre-dashboard.niceglacier-4979f100.eastus.azurecontainerap
+004e: ps.io
+0055: user-agent: curl/7.81.0
+006e: accept: */*
+007b: 
+== Info: TLSv1.2 (IN), TLS header, Supplemental data (23):
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+<= Recv SSL data, 230 bytes (0xe6)
+0000: ........u.p.....sn.J...i...geW.....QW._.........+....|.>i]f..W..
+0040: L.....bG[I.....1.B.6.!....<-.}O..#..z<P.V...H<.z.vXI.q?).U.\."=S
+0080: ..s3.....G].n...*O.M..1.{.sM.e....Q.)U.u. ........~..f.X.R.MR.L.
+00c0: .......LM....].o.qG..*2.....*..0......
+== Info: TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+<= Recv SSL data, 230 bytes (0xe6)
+0000: ........~.......sn.J...i...geW........w7.[jRF..3F[.....Y+....%o
+0040: .0...k...h.-.......u....2.i../:.p.....n...v.~t.r...g......E..t^.
+0080: ....g}Q.r^Fv....G{......\d......F.9R...:..G...DU..!..[..m-.abp..
+00c0: ...x..M..a....df9.T..e.8.:.....)......
+== Info: old SSL session ID is stale, removing
+== Info: TLSv1.2 (IN), TLS header, Supplemental data (23):
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....?
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.2 (OUT), TLS header, Supplemental data (23):
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.2 (IN), TLS header, Supplemental data (23):
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.2 (IN), TLS header, Supplemental data (23):
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....a
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+<= Recv header, 13 bytes (0xd)
+0000: HTTP/2 403 
+<= Recv header, 20 bytes (0x14)
+0000: content-length: 19
+<= Recv header, 26 bytes (0x1a)
+0000: content-type: text/plain
+<= Recv header, 37 bytes (0x25)
+0000: date: Wed, 07 Oct 2026 12:28:51 GMT
+<= Recv header, 2 bytes (0x2)
+0000: 
+<= Recv data, 19 bytes (0x13)
+0000: RBAC: access denied
+== Info: Connection #0 to host sre-dashboard.niceglacier-4979f100.eastus.azurecontainerapps.io left intact
